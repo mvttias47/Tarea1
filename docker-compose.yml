@@ -1,0 +1,72 @@
+version: '3'
+services:
+  redis1:
+    image: redis:latest
+    container_name: redis1
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--maxmemory", "100mb", "--maxmemory-policy", "allkeys-lru"]
+
+  redis2:
+    image: redis:latest
+    container_name: redis2
+    ports:
+      - "6380:6379"
+    command: ["redis-server", "--maxmemory", "100mb", "--maxmemory-policy", "allkeys-lru"]
+
+  redis3:
+    image: redis:latest
+    container_name: redis3
+    ports:
+      - "6381:6379"
+    command: ["redis-server", "--maxmemory", "100mb", "--maxmemory-policy", "allkeys-lru"]
+
+  redis4:
+    image: redis:latest
+    container_name: redis4
+    ports:
+      - "6382:6379"
+    command: ["redis-server", "--maxmemory", "100mb", "--maxmemory-policy", "allkeys-lru"]
+
+  redis5:
+    image: redis:latest
+    container_name: redis5
+    ports:
+      - "6383:6379"
+    command: ["redis-server", "--maxmemory", "100mb", "--maxmemory-policy", "allkeys-lru"]
+
+  redis6:
+    image: redis:latest
+    container_name: redis6
+    ports:
+      - "6384:6379"
+    command: ["redis-server", "--maxmemory", "100mb", "--maxmemory-policy", "allkeys-lru"]
+
+  redis7:
+    image: redis:latest
+    container_name: redis7
+    ports:
+      - "6385:6379"
+    command: ["redis-server", "--maxmemory", "100mb", "--maxmemory-policy", "allkeys-lru"]
+
+  redis8:
+    image: redis:latest
+    container_name: redis8
+    ports:
+      - "6386:6379"
+    command: ["redis-server", "--maxmemory", "100mb", "--maxmemory-policy", "allkeys-lru"]
+
+  grpc-server:
+    build: .
+    container_name: grpc-server
+    depends_on:
+      - redis1
+      - redis2
+      - redis3
+      - redis4
+      - redis5
+      - redis6
+      - redis7
+      - redis8
+    ports:
+      - "50051:50051"
